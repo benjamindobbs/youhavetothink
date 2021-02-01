@@ -4,7 +4,10 @@
       
       <v-form
         ref="form"
-        v-model="valid" 
+        v-model="valid"
+        @submit= "validate()"
+        onSubmit="return false;"
+
       >
       <div>
         <v-layout justify-center>
@@ -18,7 +21,6 @@
           :hint= this.hint
           background-color= "#9575"
           persistent-hint
-          reverse
           >
           </v-text-field>
         <v-layout justify-center>
@@ -68,6 +70,9 @@
     </v-app> -->
 </template>
 <script>
+const success = require("@/assets/success.wav");
+const incorrect =require("@/assets/incorrect.mp3")
+const regex = /[!"#$%&'()*+, -./:;<=>?@[\]^_`{|}~]/g;
   export default {
     name: 'input-form',
     props: {
@@ -82,24 +87,34 @@
       wrong: '',
       right: '',
       timeout: 2000,
+      success: '',
+      incorrect: '',
       
     }),
     methods: {
       validate(){
-        if(this.word == this.answer){
+        if(this.word.toUpperCase().replace(regex, '') == this.answer.toUpperCase().replace(regex,'')){
           this.$emit('correct-pw', 1)
           this.right = true
           this.word = ''
+          this.playSound(success)
         } else {
           this.wrong = true
           this.word= null
+          this.playSound(incorrect)
         }
+      },
+      playSound (sound) {
+      if(sound) {
+        var audio = new Audio(sound);
+        audio.play();
       }
-    },
+      },
     computed: {
       Rules: function() {
         return [v => v == this.answer]
       }
+    }
     }
   }
 

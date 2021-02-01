@@ -16,14 +16,13 @@ style= "padding: 15px 25px">
 <script>
 
     export default {
-
         data() {
             return {
                 timerCount: 100,
-                seconds: 60
+                seconds: 600,
             }
+        
         },
-
         watch: {
 
             timerCount: {
@@ -32,6 +31,7 @@ style= "padding: 15px 25px">
                     if (value > 0) {
                         setTimeout(() => {
                             this.timerCount= this.timerCount - (1/this.seconds);
+                            
                         }, 10);
                         
                     } else { 
@@ -39,10 +39,11 @@ style= "padding: 15px 25px">
                     }
 
                 },
-                immediate: true // This ensures the watcher is triggered upon creation
+                immediate: true, // This ensures the watcher is triggered upon creation
             }
 
         }
     }
+      
 
 </script>
