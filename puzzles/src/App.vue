@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-container>
+    <v-container justify-center>
       <v-banner
       elevation="10"
       dark
@@ -9,7 +9,7 @@
       color= "cyan lighten-1"
       min-height=50
       >
-      <h1 class= "text-button"  align="center">YOU HAVE TO THINK</h1>
+      <h1 class= "text-button" align="center">YOU HAVE TO TH.INK</h1>
       </v-banner>
       
   </v-container>

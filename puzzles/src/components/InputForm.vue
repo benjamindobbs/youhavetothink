@@ -42,7 +42,6 @@
             color="green accent-2"
             elevation= 5
             rounded
-            
             :timemout="timeout"
             >
             <h1 class="overline-xl" align="center"> Correct! </h1>
@@ -55,7 +54,6 @@
             color="orange darken-4"
             elevation= 5
             rounded
-            
             :timemout="timeout"
             >
             <h1 class="overline-xl" align="center"> Incorrect! </h1>
